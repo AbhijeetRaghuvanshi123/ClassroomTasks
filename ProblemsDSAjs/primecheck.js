@@ -1,4 +1,4 @@
-let n = 531;
+let n = -10;
 
 function isprime(n) {
   if (n == 1) return false;
