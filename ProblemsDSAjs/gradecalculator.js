@@ -1,23 +1,28 @@
-let grade = 83;
+const readline = require("readline-sync");
+let marks = readline.questionInt("Enter Your marks: ");
 
-switch (true) {
-  case grade > 89:
+switch (true){
+  case marks > 100 || marks < 0:
+    console.log("Enter Valid Marks(0-100): ");
+    break;
+
+  case marks > 89:
     console.log("A");
     break;
 
-  case grade > 79 && grade < 90:
+  case marks > 79:
     console.log("B");
     break;
 
-  case grade > 69 && grade < 80:
+  case marks > 69:
     console.log("C");
     break;
 
-  case grade > 59 && grade < 70:
+  case marks > 59:
     console.log("D");
     break;
 
-  case grade < 60:
+  case marks < 60:
     console.log("F");
     break;
 }

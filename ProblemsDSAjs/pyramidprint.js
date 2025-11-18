@@ -1,4 +1,4 @@
-let rows = 5;
+let rows = 50;
 
 let stars = 1;
 let space = rows - 1;

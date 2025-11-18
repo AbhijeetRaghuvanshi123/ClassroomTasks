@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Two Button</h1>
+    
+
+    <div class="div">
+        <button id="red">red</button>
+        <button id="blue">blue</button>
+    </div>
+  </body>
+  <script>
+        document.getElementById("red").onclick = HandleClick("red");
+        document.getElementById("blue").onclick = HandleClick("blue");
+
+        function HandleClick(color){
+            return function () {
+                document.body.style.backgroundColor = color;
+            };
+        };
+    </script>
+</html>
