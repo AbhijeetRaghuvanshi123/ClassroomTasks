@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .circle{
+            height: 50px;
+            width: 50px;
+            background-color: red;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <h1>heading 1</h1>
+    <h1>heading 2</h1>
+    <h2 id="byid">heading 3</h2>
+    <p class="byclass">this is para</p>
+    <p class="byclass">this is para</p>
+
+    <div class="container">
+        <p>this is para 1</p>
+        <p>this is para 2</p>
+    </div>
+
+    <script>
+        const div = document.createElement("div");
+        div.classList.add("circle");
+        document.body.appendChild(div);
+    </script>
+</body>
+</html>

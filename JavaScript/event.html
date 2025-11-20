@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .grandparent {
+        width: 600px;
+        height: 500px;
+        background: red;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .parent {
+        width: 300px;
+        height: 250px;
+        background: blue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .child {
+        width: 150px;
+        height: 125px;
+        background: green;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grandparent">
+      <div class="parent">
+        <div class="child"></div>
+      </div>
+    </div>
+
+    <script>
+      let grandparent = document.querySelector(".grandparent");
+      let parent = document.querySelector(".parent");
+      let child = document.querySelector(".child");
+
+      grandparent.addEventListener("click", () => {
+        console.log("grand parent was clicked");
+        console.log(event);
+      });
+    </script>
+  </body>
+</html>
