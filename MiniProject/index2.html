@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+        .circle{
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .square{
+            height: 100px;
+            width: 100px;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .rectangle{
+            height: 100px;
+            width: 160px;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .container{
+            height: 800px;
+            width: 800px;
+            background-color: aqua;
+        }
+    </style>
+  </head>
+  <body>
+    <input
+      type="text"
+      name="shapename"
+      id="shapename"
+      placeholder="Enter shapename"
+    />
+
+    <input
+      type="number"
+      name="quantity"
+      id="quantity"
+      placeholder="Enter Number of shapes"
+    />
+
+    <input type="color" name="shapecolor" id="shapecolor" />
+
+    <button id="generate">Generate</button>
+
+    <div class="container"></div>
+
+    <script>
+        const generatebtn = document.querySelector("#generate");
+
+        generatebtn.addEventListener("click", ()=>{
+            const shapename = document.querySelector("#shapename").value;
+            const quantity = document.querySelector("#quantity").value;
+            const shapecolor = document.querySelector("#shapecolor").value;
+            const container = document.querySelector(".container");
+
+            container.innerHTML = "";
+
+            for(let i = 0; i < quantity; i++){
+                let shape = document.createElement("div");
+                shape.classList.add(shapename);
+                shape.style.backgroundColor = shapecolor;
+                container.appendChild(shape);
+            }
+        });
+    </script>
+  </body>
+</html>
