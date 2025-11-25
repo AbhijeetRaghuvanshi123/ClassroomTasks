@@ -1,0 +1,290 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Webstore</title>
+    <style>
+      .container {
+        text-align: center;
+        background-color: darkblue;
+        border-radius: 1rem;
+        padding: 2rem;
+      }
+
+      #resultbox {
+        margin-top: 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+      }
+
+      .card {
+        width: 220px;
+        background: white;
+        padding: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        text-align: left;
+      }
+
+      .card img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 6px;
+      }
+
+      .title {
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin-top: 0.5rem;
+      }
+
+      .price {
+        color: green;
+        font-weight: bold;
+        margin: 0.3rem 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 style="color: yellow">Weclcome to Webstore</h1>
+      <input
+        type="text"
+        name="product"
+        id="product"
+        placeholder="Enter product name"
+      />
+      <br /><br />
+      <button id="search">Search</button>
+      <div id="resultbox"></div>
+    </div>
+
+    <script>
+      const searchbtn = document.querySelector("#search");
+      const resultbox = document.querySelector("#resultbox");
+
+      searchbtn.addEventListener("click", async () => {
+        const productname = document.querySelector("#product").value.trim();
+
+        if (!productname) {
+          alert("Please enter product name!");
+          return;
+        }
+
+        resultbox.innerHTML = "<p>Please wait looking for product...</p>";
+
+        try {
+          const response = await fetch(
+            `https://dummyjson.com/products/search?q=${productname}`
+          );
+
+          if (!response.ok) {
+            resultbox.innerHTML =
+              "<p style='color: red;'>Product Not Fount!</p>";
+            return;
+          }
+
+          const data = await response.json();
+          resultbox.innerHTML = data.products
+            .map(
+              (product) => `
+          <div class ="card">
+            <img src="${product.thumbnail}" alt="${product.title}" />
+              <div class="title">${product.title}</div>
+              <div class="price">$${product.price}</div>
+              <p>${product.description.substring(0, 60)}...</p>
+            </div>
+          `
+            )
+            .join("");
+        } catch (error){
+          console.log(error);
+          resultbox.innerHTML =
+            "<p style='color:red;'>Error fetching data.</p>";
+        }
+      });
+    </script>
+  </body>
+</html>
+ -->
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amazon Style Store</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #e3e6e6;
+    }
+
+    /* Top Navbar */
+    .navbar {
+      background-color: #131921;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: white;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ff9900;
+    }
+
+    .search-bar {
+      flex: 1;
+      display: flex;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+    }
+
+    .search-bar button {
+      background-color: #febd69;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    #resultbox {
+      margin: 20px auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      max-width: 1100px;
+    }
+
+    .card {
+      width: 230px;
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin: 0.5rem 0;
+      min-height: 40px;
+    }
+
+    .price {
+      color: #B12704;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .btn-cart {
+      margin-top: 10px;
+      width: 100%;
+      background-color: #ffd814;
+      border: 1px solid #fcd200;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-cart:hover {
+      background-color: #f7ca00;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo">MyStore</div>
+
+    <div class="search-bar">
+      <input type="text" id="product" placeholder="Search products">
+      <button id="search">Search</button>
+    </div>
+  </div>
+
+  <!-- Product Grid -->
+  <div id="resultbox"></div>
+
+  <script>
+    const searchbtn = document.querySelector("#search");
+    const resultbox = document.querySelector("#resultbox");
+
+    searchbtn.addEventListener("click", async () => {
+      const productname = document.querySelector("#product").value.trim();
+
+      if (!productname) {
+        alert("Please enter product name!");
+        return;
+      }
+
+      resultbox.innerHTML = "<p>Loading...</p>";
+
+      try {
+        const response = await fetch(
+          `https://dummyjson.com/products/search?q=${productname}`
+        );
+
+        const data = await response.json();
+
+        if (!data.products || data.products.length === 0) {
+          resultbox.innerHTML =
+            "<p style='color:red;font-size:1.2rem;'>No products found!</p>";
+          return;
+        }
+
+        resultbox.innerHTML = data.products.map(
+          (product) => `
+            <div class="card">
+              <img src="${product.thumbnail}" alt="${product.title}" />
+              <div class="title">${product.title}</div>
+              <div class="price">$${product.price}</div>
+              <p>${product.description.substring(0, 60)}...</p>
+              <button class="btn-cart">Add to Cart</button>
+            </div>
+          `
+        ).join("");
+
+      } catch (error) {
+        console.log(error);
+        resultbox.innerHTML =
+          "<p style='color:red;'>Error fetching data.</p>";
+      }
+    });
+  </script>
+
+</body>
+</html>
