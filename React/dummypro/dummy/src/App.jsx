@@ -1,9 +1,19 @@
 import React from 'react'
-import Child1 from "./Child1"
+import Custom from './Custom'
 
 const App = () => {
+  const [data] = Custom("https://dummyjson.com/products");
   return (
-    <div><Child1/></div>
+    <div>
+      {data &&
+        data.products.map((products) => {
+          return (
+            <div>
+              <p key={products.id}>{products.title}</p>
+            </div>
+          );
+        })}
+    </div>
   )
 }
 
