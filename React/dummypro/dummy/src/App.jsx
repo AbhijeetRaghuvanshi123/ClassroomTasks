@@ -1,20 +1,8 @@
-import React from 'react'
-import Custom from './Custom'
+import React from "react";
+import Homepage from "./Homepage"; // Import the Homepage component
 
 const App = () => {
-  const [data] = Custom("https://dummyjson.com/products");
-  return (
-    <div>
-      {data &&
-        data.products.map((products) => {
-          return (
-            <div>
-              <p key={products.id}>{products.title}</p>
-            </div>
-          );
-        })}
-    </div>
-  )
-}
+  return <Homepage />;
+};
 
-export default App
+export default App;

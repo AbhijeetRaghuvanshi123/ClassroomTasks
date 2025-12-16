@@ -1,7 +1,6 @@
-import React from "react";
 import { useState, useEffect } from "react";
 
-const Custom = (url) => {
+const useFetch = (url) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -28,4 +27,4 @@ const Custom = (url) => {
   return { data, isLoading, error };
 };
 
-export default Custom;
+export default useFetch;
