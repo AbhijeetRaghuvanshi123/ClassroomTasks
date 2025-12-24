@@ -6,7 +6,7 @@ const app = express();
 const PORT = 3000;
 app.use(express.json());
 
-mongoose.connect("mongodb+srv://abhijeetraghuvanshi9842abhi:abhijeet12r@cluster0.2su6d70.mongodb.net/").then(() => {console.log("Connected to DB");}).catch((err) => {console.log(err);});
+mongoose.connect("").then(() => {console.log("Connected to DB");}).catch((err) => {console.log(err);});
 
 
 const UserSchema = new mongoose.Schema({
