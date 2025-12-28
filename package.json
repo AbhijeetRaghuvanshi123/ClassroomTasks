@@ -1,7 +1,15 @@
 {
   "dependencies": {
+    "@reduxjs/toolkit": "^2.11.2",
+    "@tailwindcss/vite": "^4.1.18",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
     "formik": "^2.4.9",
+    "mongoose": "^9.0.2",
     "multer": "^2.0.2",
-    "react-router-dom": "^7.10.1"
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^7.10.1",
+    "tailwindcss": "^4.1.18"
   }
 }
